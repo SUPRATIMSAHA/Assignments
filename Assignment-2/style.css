@@ -1,0 +1,51 @@
+body{
+    margin: 0;
+    padding: 0;
+}
+
+h1{
+    position: sticky;
+    top: 0px;
+    background-color: #e85d04;
+    padding: 10px;
+    color: white;
+    margin: 0;
+}
+
+span{
+    padding: 10px;
+}
+
+div p:first-of-type span::before{
+    content: '\2764';
+    color: red;
+}
+
+div p:nth-of-type(2) span::before{
+    content: '\1F609';
+}
+
+div p:nth-of-type(3) span::before{
+    content: '\1F60D';
+}
+
+div p:nth-of-type(4) span::before{
+    content: '\1F619';
+}
+
+div p:nth-of-type(5) span::before{
+    content: '\1F605';
+}
+
+p{
+    padding-top: 10px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: 20px;
+    font-weight: bold;
+    line-height: 30px;
+    color: #ffba08;
+}
+
+p + p{
+    border-top: 1px solid #fda605;
+}
