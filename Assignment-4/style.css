@@ -1,0 +1,237 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+nav{
+    width: 100%;
+    min-height: 60px;
+    position: fixed;
+    top: 0;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-image: linear-gradient(to right top, #030116, #0c0a26, #0c1237, #0c1749, #0c1b5b, #071e6e, #022081, #002194, #0021ad, #001ec5, #0018de, #1309f6);
+}
+
+nav a{
+    text-decoration: none;
+    font-size: 22px;
+    font-weight: 600;
+    color: white;
+    width: 120px;
+}
+
+nav ul{
+    list-style: none;
+    width: 500px;
+    display: flex;
+    justify-content: space-around;
+}
+
+nav a:hover{
+    color: #90e0ef;
+}
+
+nav #check{
+    display: none;
+}
+
+nav .checkButton{
+    position: absolute;
+    top: 0;
+    margin: 10px 20px 0 90vw;
+    line-height: 50px;
+    cursor: pointer;
+    display: none;
+    padding: 10px;
+    width: 30px;
+}
+
+nav .checkButton span {
+    width: 25px;
+    height: 3px;
+    margin: 5px auto;
+    display: block;
+    background: white;
+    transition: all 0.8s cubic-bezier(0.810, -0.330, 0.345, 1.375);
+}
+
+.cover{
+    width: 100%;
+    height: 500px;
+    margin-top: 60px;
+    background: url(https://images.unsplash.com/photo-1497565857740-2a1b58ce75b9?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1566&q=80) no-repeat;
+    background-size: max(100%, 700px) 550px;
+    background-position: center;
+    overflow: hidden;
+    animation: carousel 20s infinite;
+}
+
+@keyframes carousel{
+    15% {
+        background: url(https://images.unsplash.com/photo-1497565857740-2a1b58ce75b9?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1566&q=80) no-repeat;
+        background-size: max(100%, 700px) 550px;
+        background-position: center;
+    }
+    35%{
+        background: url(https://images.unsplash.com/photo-1612111394447-998fc2d16527?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80) no-repeat;
+        background-size: max(100%, 700px) 650px;
+        background-position: center;
+    }
+    55%{
+        background: url(https://images.unsplash.com/photo-1612111394447-998fc2d16527?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80) no-repeat;
+        background-size: max(100%, 700px) 650px;
+        background-position: center;
+    }
+    70% {
+        background: url(https://images.unsplash.com/photo-1596558450426-f4a167918877?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=750&q=80) no-repeat;
+        background-size: max(100%, 700px) 700px;
+        background-position: center;
+    }
+    85% {
+        background: url(https://images.unsplash.com/photo-1596558450426-f4a167918877?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=750&q=80) no-repeat;
+        background-size: max(100%, 700px) 700px;
+        background-position: center;
+    }
+}
+
+.cards{
+    margin: 20px auto;
+    padding: 10px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 15px;
+}
+
+.card{
+    border: 1px solid gray;
+    height: auto;
+    border-radius: 5px;
+    overflow: hidden;
+    transition: all 0.6s;
+}
+
+.card:hover{
+    box-shadow: 0px 0px 15px 3px #adadad;
+    cursor: pointer;
+}
+
+.cards div img{
+    width: 100%;
+    height: 250px;
+}
+
+.cards .card-body{
+    padding: 5px;
+}
+
+.cards .card-body h3{
+    color: #2f5fff;
+}
+
+.cards .card-body p{
+    padding-top: 10px;
+}
+
+footer{
+    width: 100%;
+    height: 150px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    background-image: linear-gradient(to right top, #051937, #004d7a, #008793, #00bf72, #a8eb12);
+    padding-top: 20px;
+}
+
+footer ul{
+    list-style: none;
+}
+
+footer ul li a{
+    text-decoration: none;
+    color: white;
+    font-size: 20px;
+}
+
+footer ul li a:hover{
+    text-decoration: underline;
+}
+
+footer div{
+    width: 200px;
+    color: white;
+}
+
+footer div i{
+    margin: 25px 15px 0 0;
+    font-size: 20px;
+    cursor: pointer;
+    transition: all .5s ease;
+}
+
+footer div i:hover{
+    transform: scale(1.5);
+}
+
+footer div i:hover:nth-of-type(1){
+    color: #e4405f;
+}
+footer div i:hover:nth-of-type(2){
+    color: #3b5999;
+}
+footer div i:hover:nth-of-type(3){
+    color: #55acee;
+}
+footer div i:hover:nth-of-type(4){
+    color: #cd201f;
+}
+
+@media screen and (max-width: 768px){
+    nav{
+        height: auto;
+        flex-direction: column;
+    }
+    nav ul{
+        flex-direction: column;
+        align-items: center;
+    }
+    nav a i{
+        padding-right: 10px;
+    }
+    nav a, nav ul li a{
+        padding: 10px 0;
+        display: none;
+    }
+    nav .checkButton{
+        display: block;
+    }
+    nav #check:checked + a{
+        padding-top: 60px;
+    }
+    nav #check:checked ~ a{
+        display: flex;
+    }
+    nav #check:checked ~ ul li a{
+        display: flex;
+    }
+    nav #check:checked ~ ul{
+        height: 130px;
+    }
+    nav #check:checked ~ .checkButton span{
+        width: 24px;
+    }
+    nav #check:checked ~ .checkButton span:first-of-type {
+        transform: rotate(45deg) translate(10px, 5px);
+    }
+    nav #check:checked ~ .checkButton span:nth-of-type(2) {
+        opacity: 0;
+    }
+    nav #check:checked ~ .checkButton span:last-of-type {
+        transform: rotate(-45deg) translate(6px, -1px);
+    }
+}
