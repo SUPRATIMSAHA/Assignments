@@ -1,0 +1,225 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    font-family: 'Secular One', sans-serif;
+}
+nav{
+    background-color: black;
+    height: 100vh;
+    width: 48px;
+}
+
+nav a{
+    color: white;
+    text-decoration: none;
+}
+
+nav #logo h3{
+    color:  #00ffff;
+    font-size: 45px;
+    padding: 0;
+    text-align: center;
+    margin: 0;
+    text-shadow: 0 1px 0 #f00202,
+    0 2px 0 #f80707,
+    0 3px 0 #da0c0c,
+    0 4px 0 #ac0a0a,
+    0 5px 0 #940909,
+    0 6px 1px rgba(243, 70, 70, 0.4),
+    0 0 5px rgba(241, 4, 4, 0.1),
+    0 1px 3px rgba(223, 7, 7, 0.3),
+    0 3px 5px rgba(218, 10, 10, 0.2),
+    0 5px 10px rgba(243, 11, 11, 0.25),
+    0 10px 10px rgba(228, 10, 10, 0.2),
+    0 20px 20px rgba(110, 2, 2, 0.15);
+}
+
+#logo small{
+    color:  white;
+    font-size: 10px;
+    font-weight: bold;
+}
+
+nav ul{
+    list-style: none;
+    padding: 0;
+    width: 100%;
+    text-align: center;
+}
+
+nav ul li{
+    margin: 15px auto;
+    width: 16px;
+    opacity: 0.6;
+}
+
+
+nav ul li:hover{
+    opacity: 1;
+}
+
+nav ul li:hover a{
+    color: turquoise;
+}
+
+nav ul li .active{
+    color: turquoise;
+}
+
+#navMenu li:nth-of-type(1){
+    opacity: 1;
+}
+
+.tooltip{
+    opacity: 1 !important;
+}
+
+.tooltip-inner {
+    background-color: #00ffff;
+    color: black;
+}
+
+.bs-tooltip-end .tooltip-arrow::before, .bs-tooltip-auto[data-popper-placement^=right] .tooltip-arrow::before {
+    border-right-color: #00ffff;
+}
+
+main{
+    margin-left: 48px;
+}
+
+#home .col{
+    background: url(./Images/particle.jpg) no-repeat;
+    background-size: max(1400px, 100%) 100%;
+    height: 100vh;
+    overflow: hidden;
+}
+
+#home .col div{
+    margin: 100px auto;
+    color: white;
+    font-size: 45px;
+    white-space: pre-line;
+}
+
+#home .col div span{
+    color:  #f00202;
+    font-size: 55px;
+    text-shadow: -5px -2px 0 #00ffff,
+    -5px -2px 0 #07f0f8,
+    -5px -2px 0 #0cccda,
+    -5px -2px 0 #0aaca4,
+    -5px -2px 0 #098f94,
+    -4px -2px 1px rgba(70, 237, 243, 0.4),
+    -4px -2px 5px rgba(4, 241, 241, 0.1),
+    -5px -2px 3px rgba(7, 223, 223, 0.3),
+    -5px -2px 5px rgba(10, 211, 218, 0.2),
+    -5px -2px 5px rgba(11, 243, 243, 0.25),
+    -5px -2px 5px rgba(10, 228, 228, 0.2),
+    -5px -2px 5px rgba(255, 255, 255, 0.15);
+}
+
+#about, #skills{
+    padding-top: 50px;
+}
+
+#icons div i {
+    color: #585858;
+    cursor: pointer;
+    transition: all 0.3s ease-in;
+}
+
+#icons div span{
+    font-size: 1.2rem;
+    visibility: hidden;
+    transition-property: all;
+    transition-delay: 0.3s;
+}
+
+#icons div i:hover{
+    transform: translateY(-5px);
+}
+
+
+#icons div:nth-of-type(1) i:hover, 
+#icons div:nth-of-type(1) i:hover + span{
+    color: #306998;
+    visibility: visible;
+}
+
+#icons div:nth-of-type(2) i:hover, 
+#icons div:nth-of-type(2) i:hover + span{
+    color: #f0db4f;
+    visibility: visible;
+}
+
+#icons div:nth-of-type(3) i:hover, 
+#icons div:nth-of-type(3) i:hover + span{
+    color: #e34c26;
+    visibility: visible;
+}
+
+#icons div:nth-of-type(4) i:hover, 
+#icons div:nth-of-type(4) i:hover + span{
+    color: #264de4;
+    visibility: visible;
+}
+
+#icons div:nth-of-type(5) i:hover, 
+#icons div:nth-of-type(5) i:hover + span{
+    color: #61DBFB;
+    visibility: visible;
+}
+
+#icons div:nth-of-type(6) i:hover,
+#icons div:nth-of-type(6) i:hover + span{
+    color: #3C873A;
+    visibility: visible;
+}
+
+#icons div:nth-of-type(7) i:hover, 
+#icons div:nth-of-type(7) i:hover + span{
+    color: #00758F;
+    visibility: visible;
+}
+
+#icons div:nth-of-type(8) i:hover, 
+#icons div:nth-of-type(8) i:hover + span{
+    color: #3FA037;
+    visibility: visible;
+}
+
+@media screen and (max-width: 600px){
+    #icons i:nth-of-type(3):hover{
+        color: #e34c26;
+    }
+    #home .col div{
+        font-size: 33px;
+    }
+    #home .col div span{
+        font-size: 45px;
+    }
+    #home .col div:first-of-type{
+        transform: translateY(30%);
+    }
+}
+
+@media screen and (max-width: 575px){
+    #icons i {
+        font-size: 5rem;
+    }
+}
+
+@media screen and (max-width: 400px){
+    #home .col div{
+        font-size: 25px;
+    }
+    #home .col div span{
+        font-size: 35px;
+    }
+    #home .col div:first-of-type{
+        transform: translateY(50%);
+    }
+}
