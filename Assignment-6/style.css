@@ -1,0 +1,59 @@
+*{
+    font-family: Arial, Helvetica, sans-serif;
+}
+.container{
+    width: 500px;
+    margin: 50px auto;
+}
+
+section{
+    border: 1px solid #07f391;
+    padding: 10px;
+}
+
+label{
+    display: block;
+    font-size: large;
+    font-weight: 600;
+    padding: 10px 0 10px 0;
+}
+
+input{
+    padding: 7px;
+    margin-bottom: 20px;
+}
+
+#add_todo{
+    padding: 8px;
+    width: 100px;
+    background-color: black;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+#list li{
+    padding: 10px;
+    border: 1px solid goldenrod;
+    margin: 2px auto;
+}
+
+#delete_todo, #edit_todo{
+    float: right;
+    width: 40px;
+    height: 20px;
+    border-radius: 5px;
+    margin: auto 5px;
+    background-color: black;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+#list li button:focus{
+    outline: none;
+}
+
+#list li:hover{
+    background-color: gainsboro;
+}
