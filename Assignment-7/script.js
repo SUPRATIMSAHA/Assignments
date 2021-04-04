@@ -6,7 +6,7 @@ const weather = document.querySelector(".weather")
 const min_max_temp = document.querySelector(".min_max_temp")
 const loading = document.querySelector(".loading")
 const err_msg = document.querySelector(".err_msg")
-const API_key = '771ca0fc314d995a605236ae3d9bd36a'
+const API_key = config.api_key
 
 let load = false;
 
