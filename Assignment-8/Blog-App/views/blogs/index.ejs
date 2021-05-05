@@ -1,0 +1,47 @@
+<%- include("../partials/header.ejs", {style: ["style"], title: "Blogs"}) %>
+<%- include("../partials/navbar.ejs", {active: "blogs"})%>
+
+<div class="container">
+    <div class="row">
+        <%- include('../partials/flash.ejs') %>
+        <% for(let blog of blogs) { %>
+        <div class="col-lg-10 mx-auto mt-3 mb-4">
+            <div class="row g-0 bg-light position-relative">
+                <div class="col-md-6 col-lg-5 mb-md-0 p-4">
+                    <a style="text-decoration: none; color: black;" rel="noopener" href="/blogs/blog/<%= blog._id %>">
+                        <img src="<%= blog.img %>" class="w-100" height="200" alt="Searching-Sorting-Visualizer">
+                    </a>
+                </div>
+                <div class="col-md-6 col-lg-7 p-4 ps-md-0">
+                    <a style="text-decoration: none; color: black;" rel="noopener" href="/blogs/blog/<%= blog._id %>">
+                        <h3 class="mt-0 fw-bold"><%= blog.title %></h3>
+                        <p id="blog-body"><%= blog.body.replace(/<[^>]+>/g, '').substring(0, 90) %></p>
+                        <div class="authorImg" id="authorImg" style="background-color: <%= blog.user.background %>">
+                            <%= blog.user.firstName.charAt(0).toUpperCase() %><%= blog.user.lastName.charAt(0).toUpperCase() %>
+                        </div>
+                        <%= blog.user.firstName %> <%= blog.user.lastName %>
+                        <% if (new Date().getFullYear() === blog.date.getFullYear()) { %>
+                        <small>
+                            <%= new Intl.DateTimeFormat("en-US", { month: "short" }).format(blog.date) %>
+                            <%= blog.date.getDate() %> |
+                            <%= Math.ceil(blog.body.replace(/(^\s*)|(\s*$)/gi,"").replace(/[]{2,}/gi,"").replace(/\n /,"\n").split(' ').length / 200) %>
+                            min read
+                        </small>
+                        <% } else { %>
+                        <small>
+                            <%= new Intl.DateTimeFormat("en-US", { month: "short" }).format(blog.date) %>
+                            <%= blog.date.getDate() %>,
+                            <%= blog.date.getFullYear() %> |
+                            <%= Math.ceil(blog.body.replace(/(^\s*)|(\s*$)/gi,"").replace(/[]{2,}/gi,"").replace(/\n /,"\n").split(' ').length / 200) %>
+                            min read
+                        </small>
+                        <% } %>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <% } %>
+    </div>
+</div>
+
+<%- include("../partials/footer.ejs") %>

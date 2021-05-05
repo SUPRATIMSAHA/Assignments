@@ -1,0 +1,45 @@
+<%- include("../partials/header.ejs", {style: [""], title: "SignUp"}) %>
+
+
+
+<div class="container">
+    <form class="row g-3 col-md-10 col-lg-8" action="/user/signup" method="POST" style="margin:10px auto">
+        <%- include('../partials/flash.ejs') %>
+        <h4 class="display-4">Sign Up</h4>
+        <div class="col-12">
+            <label for="firstName" class="form-label">First name</label>
+            <input type="text" name="firstName" class="form-control" id="firstName" required>
+        </div>
+        <div class="col-12">
+            <label for="lastName" class="form-label">Last name</label>
+            <input type="text" name="lastName" class="form-control" id="lastName" required>
+        </div>
+        <div class="col-12">
+            <label for="username" class="form-label">Username</label>
+            <div class="input-group">
+                <span class="input-group-text" id="inputGroupPrepend2">@</span>
+                <input type="text" name="username" class="form-control" id="username"
+                    aria-describedby="inputGroupPrepend2" required>
+            </div>
+        </div>
+        <div class="col-12">
+            <label for="email" class="form-label">Email</label>
+            <input type="email" name="email" class="form-control" id="email" required>
+        </div>
+        <div class="col-12">
+            <label for="password" class="form-label">Password</label>
+            <input type="password" name="password" class="form-control" id="password" required>
+        </div>
+        <div class="col-12">
+            <button class="btn btn-primary" type="submit">Sign Up</button>
+        </div>
+        <div class="col-12">
+            <span>Have an account? </span>
+            <a href="/user/signin">Sign In</a>
+        </div>
+    </form>
+</div>
+
+
+
+<%- include("../partials/footer.ejs")%>

@@ -1,0 +1,17 @@
+<%- include('./header.ejs') %>
+
+<div class="container">
+  <% for(let b of blogs){ %>
+  <div class="card mb-3 mt-3">
+    <h3><%= b.title %></h3>
+    <img src="<%= b.img %>" class="card-img-top" height="500" alt="..." />
+    <div class="card-body">
+      <h5 class="card-title"><%= b.author %></h5>
+      <p class="card-text"><%= b.blog %></p>
+      <a href="/blogs/<%= b.id %>/info" class="btn btn-primary">Show Info</a>
+    </div>
+  </div>
+  <% } %>
+</div>
+
+<%- include('./footer.ejs') %>

@@ -1,0 +1,80 @@
+<%- include("./partials/header.ejs", {style: ["style"], title: "Home"}) %>
+<%- include("./partials/navbar.ejs", {active: "home"}) %>
+
+
+<div id="carousel" class="carousel slide" data-bs-ride="carousel">
+  <div class="carousel-indicators">
+    <button type="button" data-bs-target="#carousel" data-bs-slide-to="0" class="active" aria-current="true"
+      aria-label="Slide 1"></button>
+    <button type="button" data-bs-target="#carousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+    <button type="button" data-bs-target="#carousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+  </div>
+  <div class="carousel-inner">
+    <div class="carousel-item active" style="
+        background-image: url(https://images.unsplash.com/photo-1535378620166-273708d44e4c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=566&q=80);
+      ">
+      <img
+        src="https://images.unsplash.com/photo-1535378620166-273708d44e4c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=566&q=80"
+        class="d-block w-100" alt="..." />
+      <div class="carousel-caption d-none d-md-block">
+        <h5>First slide label</h5>
+        <p>Some representative placeholder content for the first slide.</p>
+      </div>
+    </div>
+    <div class="carousel-item" style="
+        background-image: url(https://images.unsplash.com/photo-1463171379579-3fdfb86d6285?ixid=MnwxMjA3fDB8MHxzZWFyY2h8NTd8fGNvbXB1dGVyfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60);
+      ">
+      <img
+        src="https://images.unsplash.com/photo-1463171379579-3fdfb86d6285?ixid=MnwxMjA3fDB8MHxzZWFyY2h8NTd8fGNvbXB1dGVyfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
+        class="d-block w-100" alt="..." />
+      <div class="carousel-caption d-none d-md-block">
+        <h5>Second slide label</h5>
+        <p>Some representative placeholder content for the second slide.</p>
+      </div>
+    </div>
+    <div class="carousel-item" style="
+        background-image: url(https://images.unsplash.com/photo-1593720213428-28a5b9e94613?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8d2ViJTIwZGV2ZWxvcG1lbnR8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60);
+      ">
+      <img
+        src="https://images.unsplash.com/photo-1593720213428-28a5b9e94613?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8d2ViJTIwZGV2ZWxvcG1lbnR8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
+        class="d-block w-100" alt="..." />
+      <div class="carousel-caption d-none d-md-block">
+        <h5>Third slide label</h5>
+        <p>Some representative placeholder content for the third slide.</p>
+      </div>
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carousel" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carousel" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+
+<div class="container-md container-fluid p-0">
+  <!-- <div class="row m-4">
+    <h1 class="text-center">Read all Tech Blogs</h1>
+  </div> -->
+  <div class="row mt-5 mb-5 mx-auto blogs">
+    <%- include("./partials/flash.ejs") %>
+    <% for(let blog of blogs) { %>
+    <div class="col-lg-4 col-md-6 mx-auto blog-col">
+      <div class="card mx-auto mb-3">
+        <img src="<%= blog.img %>" class="card-img-top p-2" height="250" alt="..." />
+        <div class="card-body text-center">
+          <h5 class="card-title"><%= blog.title %></h5>
+          <p class="card-text">
+            <%= blog.body.replace(/<[^>]+>/g, '').substring(0, 90) %>
+          </p>
+          <a href="/blogs/blog/<%= blog._id %>" class="btn btn-primary">Read Blog</a>
+        </div>
+      </div>
+    </div>
+    <% } %>
+  </div>
+</div>
+
+<%- include("./partials/footer.ejs") %>

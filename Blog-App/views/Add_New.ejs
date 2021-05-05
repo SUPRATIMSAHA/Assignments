@@ -1,0 +1,27 @@
+<%- include('./header.ejs') %>
+
+<form style="margin: 0 20px" method="POST" action="/blogs/add_new">
+  <h1>Add New Blog</h1>
+  <br />
+  <br />
+  <input type="text" name="title" placeholder="Enter title" required />
+  <br />
+  <br />
+  <input type="text" name="img" placeholder="Enter image link" required />
+  <br />
+  <br />
+  <input type="text" name="author" placeholder="Enter author name" required />
+  <br />
+  <br />
+  <textarea
+    cols="30"
+    rows="5"
+    name="blog"
+    placeholder="Type your blog here...!!!"
+    required
+  ></textarea>
+  <br />
+  <button class="btn btn-primary" type="submit">Add blog</button>
+</form>
+
+<%- include('./footer.ejs') %>

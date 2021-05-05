@@ -1,0 +1,20 @@
+<%- include('./header.ejs') %>
+
+<div class="container">
+  <div class="card mb-3 mt-3">
+    <h3><%= temp.title %></h3>
+    <img src="<%= temp.img %>" class="card-img-top" height="500" alt="..." />
+    <div class="card-body">
+      <h5 class="card-title"><%= temp.author %></h5>
+      <p class="card-text"><%= temp.blog %></p>
+      <a href="/blogs/<%= temp.id %>/edit" class="btn btn-primary">Edit</a>
+      <br />
+      <br />
+      <form method="POST" action="/blogs/<%= temp.id %>/delete?_method=DELETE">
+        <button class="btn btn-danger">Delete</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<%- include('./footer.ejs') %>

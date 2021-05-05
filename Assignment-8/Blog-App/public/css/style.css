@@ -1,0 +1,279 @@
+body {
+  background-color: #e6e4e4;
+}
+
+.alert {
+  word-break: break-all;
+}
+
+.blogs .alert {
+  position: absolute;
+  width: inherit;
+  top: 10px;
+}
+
+#carousel {
+  height: 70vh;
+  overflow: hidden;
+}
+
+.carousel-inner .carousel-item img {
+  width: 100%;
+  height: 400px;
+  object-fit: fill;
+}
+
+.carousel-inner {
+  /* make sure your .items will get correct height */
+  height: 100%;
+}
+
+.carousel-item {
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 100%;
+}
+
+.carousel-item:nth-of-type(1) {
+  background-size: 100% 200%;
+  background-position: 50% 25%;
+}
+
+.carousel-item:nth-of-type(2) {
+  background-size: 100% 120%;
+  background-position: 50% 20%;
+}
+
+.carousel-item:nth-of-type(3) {
+  background-size: 100% 110%;
+  background-position: 50% 20%;
+}
+
+.carousel-item img {
+  visibility: hidden;
+}
+
+.blogs .blog-col .card {
+  width: 18rem;
+}
+
+#blog-body {
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+label[for="body"] {
+  position: relative;
+  padding: 0;
+}
+
+.imgDiv {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  margin-top: 50px;
+  box-sizing: border-box;
+  position: relative;
+  overflow: hidden;
+}
+
+#profileImg {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  font-size: 4.5rem;
+  color: #fff;
+  text-align: center;
+  line-height: 200px;
+  cursor: pointer;
+}
+
+#authorImg {
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  font-size: 1rem;
+  color: #fff;
+  text-align: center;
+  line-height: 30px;
+  cursor: pointer;
+  border: 1px solid white;
+}
+
+small {
+  display: block;
+  padding-top: 10px;
+}
+
+#pI {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  font-size: 1.4rem;
+  color: #fff;
+  text-align: center;
+  overflow: hidden;
+  line-height: 40px;
+  cursor: pointer;
+  border: 1px solid white;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 100px;
+  margin-top: 5px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 100;
+}
+
+.dropdown-content:after {
+  content: "";
+  width: 0;
+  height: 0;
+  position: absolute;
+  bottom: 100%;
+  left: 15px;
+  border-width: 0 6px 6px 6px;
+  border-style: solid;
+  border-color: #fff transparent;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 5px 9px;
+  text-decoration: none;
+  font-size: 15px;
+  display: block;
+}
+
+.dropdown-content a:hover {
+  background-color: #f1f1f1;
+}
+
+.dropdown:hover .dropdown-content,
+.dropdown-content:hover .dropdown-content {
+  display: block;
+}
+
+.update {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(109, 99, 105, 0.5);
+  overflow: hidden;
+  width: 100%;
+  height: 0;
+  transition: 0.5s ease;
+  /* border-radius: 0px 0px 250px 250px; */
+}
+
+#profileImg:hover .update {
+  height: 50px;
+}
+
+.update:hover {
+  background-color: rgb(29, 27, 28);
+}
+
+.pic_update {
+  color: white;
+  font-size: 15px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.userName {
+  width: 250px;
+  margin: 20px auto;
+  text-align: center;
+}
+
+.firstName,
+.lastName {
+  width: 100px;
+  height: 20px;
+  padding: 5px;
+  font-size: 30px;
+  font-weight: 700;
+}
+
+.test {
+  position: absolute;
+  top: 5px;
+  right: 10px;
+  z-index: 100;
+  cursor: pointer;
+}
+
+.blog-content {
+  display: none;
+  position: absolute;
+  top: 25px;
+  right: 1px;
+  background-color: #f9f9f9;
+  min-width: 100px;
+  margin-top: 5px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 100;
+}
+
+.blog-content:after {
+  content: "";
+  width: 0;
+  height: 0;
+  position: absolute;
+  bottom: 100%;
+  right: 7px;
+  border-width: 0 6px 6px 6px;
+  border-style: solid;
+  border-color: #fff transparent;
+}
+
+.blog-content a {
+  color: black;
+  padding: 5px 9px;
+  text-decoration: none;
+  font-size: 15px;
+  display: block;
+}
+
+.blog-content a:hover {
+  background-color: #f1f1f1;
+}
+
+.chooseImg {
+  display: none;
+  position: absolute;
+  left: 50%;
+  background-color: #f9f9f9;
+  min-width: 100px;
+  margin-top: 5px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 100;
+}
+
+.chooseImg button,
+.chooseImg label {
+  color: black;
+  padding: 5px 9px;
+  text-decoration: none;
+  font-size: 15px;
+  display: block;
+}
+
+.chooseImg button:hover,
+.chooseImg label:hover {
+  background-color: #f1f1f1;
+}

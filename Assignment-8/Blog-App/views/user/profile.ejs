@@ -1,0 +1,148 @@
+<%- include("../partials/header.ejs", {style: ["style"], title: "Profile"}) %>
+<%- include("../partials/navbar.ejs", {active: ""}) %>
+
+
+<div class="container">
+    <div class="row">
+        <%- include('../partials/flash.ejs') %>
+        <div class="col-12">
+            <div class="imgDiv mx-auto">
+                <div class="profileImg" id="profileImg" style="background-color: <%= user.background %>">
+                    <% if (user.img && user.img.length) { %>
+                    <div class="profileImg" id="profileImg">
+                        <img src="<%= user.img %>" class="profile" width="200" height="200" style="margin-top: -25px;">
+                    </div>
+                    <% } else{ %>
+                    <%= user.firstName.charAt(0).toUpperCase() %><%= user.lastName.charAt(0).toUpperCase() %>
+                    <% } %>
+                    <% if (currentUser && user.username === currentUser.username) { %>
+                    <div class="update" id="update">
+                        <div class="pic_update" id="pic_update">
+                            Update
+                        </div>
+                    </div>
+                    <% } %>
+                </div>
+            </div>
+            <% if (currentUser && user.username === currentUser.username) { %>
+            <div class="chooseImg">
+                <form action="/user/<%= user.username %>/profileImg/update" method="POST" enctype="multipart/form-data">
+                    <div class="input-group">
+                        <input type="file" class="form-control" name="img" id="Profile_img" style="display: none;">
+                        <label for="Profile_img" class="w-100 text-center" style="cursor: pointer;">Choose</label>
+                    </div>
+                    <button type="submit" class="btn btn-light w-100" id="upload" disabled>Upload</button>
+                </form>
+                <% if (user.img && user.img.length) { %>
+                <form action="/user/<%= user.username %>/profileImg/delete?_method=DELETE" method="POST">
+                    <button type="submit" class="btn btn-light w-100">Delete</input>
+                </form>
+                <% } %>
+            </div>
+            <% } %>
+        </div>
+        <div class="col-12">
+            <div class="userName">
+                <span class="firstName"><%= user.firstName %></span>
+                <span class="lastName"><%= user.lastName %></span>
+            </div>
+        </div>
+    </div>
+    <hr>
+    <div class="row">
+        <div class="col-lg-10 mx-auto">
+            <h3>Posts</h3>
+        </div>
+        <div class="col-12">
+            <% if (Object.keys(blogs).length == 0) { %>
+            <div class="col-lg-10 mx-auto mt-3 mb-4">
+                <p class="text-center display-6"><strong>No Blog Written</strong></p>
+            </div>
+            <% } %>
+            <% for(let blog of blogs) { %>
+            <div class="col-lg-10 mx-auto mt-3 mb-4">
+                <div class="row g-0 bg-light position-relative">
+                    <div class="col-md-6 col-lg-5 mb-md-0 p-4">
+                        <a style="text-decoration: none; color: black;" rel="noopener"
+                            href="/blogs/blog/<%= blog._id %>">
+                            <img src="<%= blog.img %>" class="w-100" height="200" alt="Searching-Sorting-Visualizer">
+                        </a>
+                    </div>
+                    <div class="col-md-6 col-lg-7 p-4 ps-md-0 profile_blog">
+                        <% if (currentUser && user.username === currentUser.username) { %>
+                        <span class="test"><i class="fas fa-ellipsis-v"></i></span>
+                        <div class="blog-content">
+                            <a href="/blogs/blog/<%= blog._id %>/edit">Edit</a>
+                            <form action="/blogs/blog/<%= blog._id %>/delete?_method=DELETE" method="POST">
+                                <button type="submit" class="btn btn-light">Delete</input>
+                            </form>
+                        </div>
+                        <% } %>
+                        <a style="text-decoration: none; color: black;" rel="noopener"
+                            href="/blogs/blog/<%= blog._id %>">
+                            <h3 class="mt-0 fw-bold"><%= blog.title %></h3>
+                            <p id="blog-body"><%= blog.body.replace(/<[^>]+>/g, '').substring(0, 90) %></p>
+
+                            <div class="authorImg" id="authorImg" style="background-color: <%= user.background %>">
+                                <%= user.firstName.charAt(0).toUpperCase() %><%= user.lastName.charAt(0).toUpperCase() %>
+                            </div>
+                            <%= user.firstName %> <%= user.lastName %>
+                            <% if (new Date().getFullYear() === blog.date.getFullYear()) { %>
+                            <small>
+                                <%= new Intl.DateTimeFormat("en-US", { month: "short" }).format(blog.date) %>
+                                <%= blog.date.getDate() %> |
+                                <%= Math.ceil(blog.body.replace(/(^\s*)|(\s*$)/gi,"").replace(/[]{2,}/gi,"").replace(/\n /,"\n").split(' ').length / 200) %>
+                                min read
+                            </small>
+                            <% } else { %>
+                            <small>
+                                <%= new Intl.DateTimeFormat("en-US", { month: "short" }).format(blog.date) %>
+                                <%= blog.date.getDate() %>,
+                                <%= blog.date.getFullYear() %> |
+                                <%= Math.ceil(blog.body.replace(/(^\s*)|(\s*$)/gi,"").replace(/[]{2,}/gi,"").replace(/\n /,"\n").split(' ').length / 200) %>
+                                min read
+                            </small>
+                            <% } %>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <% } %>
+        </div>
+    </div>
+</div>
+
+
+<%- include("../partials/footer.ejs") %>
+<script>
+    var test = document.querySelector(".test")
+    var blog_content = document.querySelector(".blog-content")
+    $(".test").on('click', function (e) {
+        $(this).parent().find(".blog-content").toggle()
+    })
+    $(document).on('click', "#pic_update", function (e) {
+        $(".chooseImg").toggle()
+    })
+    $("#Profile_img").on("change", async function (e) {
+        $("#upload").attr("disabled", false)
+        console.log(e.target.files)
+        const file = e.target.files[0]
+        await previewFile(file)
+    })
+    const previewFile = (file) => {
+        const reader = new FileReader()
+        reader.readAsDataURL(file)
+        var src;
+        reader.onloadend = () => {
+            src = reader.result
+            $("#profileImg").html(`
+            <img src="${src}" class="profile" width="200" height="200" style="margin-top: -25px;">
+            <div class="update" id="update">
+                <div class="pic_update" id="pic_update">
+                    Update
+                </div>
+            </div>
+            `)
+        }
+    }
+</script>

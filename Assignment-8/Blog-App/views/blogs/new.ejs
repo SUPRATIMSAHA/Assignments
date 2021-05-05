@@ -1,0 +1,68 @@
+<%- include("../partials/header.ejs", {style: ["style"], title: "CreateBlog"}) %> <%- include("../partials/navbar.ejs", {active: "blogs"})
+%>
+
+<div class="container">
+  <div class="row">
+    <%- include('../partials/flash.ejs') %>
+    <div class="col-md-9 mx-auto my-auto">
+      <h1>Add New Blog</h1>
+    </div>
+  </div>
+  <div class="row mt-3">
+    <div class="col-md-9 mx-auto my-auto">
+      <form action="/blogs" method="POST" enctype="multipart/form-data" id="blog-form"
+        class="blog-form shadow p-3 mb-5 bg-body rounded">
+        <div class="input-group mb-3">
+          <label class="w-100 mb-2" for="title">Blog Title</label>
+          <input type="text" class="form-control w-100" id="title" placeholder="Blog Title" name="title" required />
+        </div>
+        <div class="input-group mb-3">
+          <label class="w-100 mb-2" for="img">Upload Image</label>
+          <input type="file" class="form-control w-100" id="img" name="img" accept="image/*" required />
+        </div>
+        <div class="form-floating">
+          <textarea class="form-control" placeholder="Write your blog here!!!" id="body" name="body"
+            required></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary mt-3">Submit</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"
+  integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+<script src="/ckeditor/ckeditor.js"></script>
+<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script>
+<script>
+  var body = document.querySelector("#body");
+  var textarea;
+  CKEDITOR.replace('body', {
+    height: '400px'
+  })
+  $(":submit").click(async function () {
+    var error = $("[for=body]")
+    var size = error.length
+    if (size == 0) {
+      var label = `<label for="body" class="error">This field is required.</label>`
+      $(label).insertAfter("#cke_body");
+    }
+  })
+  $("#blog-form").validate({
+    ignore: [],
+    debug: false,
+    event: 'blur',
+    rules: {
+      title: { required: true },
+      body: {
+        required: function (textarea) {
+          CKEDITOR.instances[textarea.id].updateElement(); // update textarea
+          var editorcontent = textarea.value.replace(/<[^>]*>/gi, ''); // strip tags
+          return editorcontent.length === 0;
+        }
+      }
+    }
+  });
+</script>
+
+<%- include("../partials/footer.ejs") %>

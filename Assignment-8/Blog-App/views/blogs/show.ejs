@@ -1,0 +1,61 @@
+<%- include("../partials/header.ejs", {style:  ["show"], title: "BlogPage"}) %> <%- include("../partials/navbar.ejs", {active: "blogs"})
+%>
+
+
+<div class="container ps-lg-5 pe-lg-5 pt-5 pb-5 overflow-hidden">
+    <%- include('../partials/flash.ejs') %>
+    <div class="row ps-lg-5 pe-lg-5 pt-5 pb-5">
+        <h1 class="fw-bold"><%= blog.title %></h1>
+    </div>
+    <div class="row ps-lg-5 pb-5">
+        <div class="col-12">
+            <a style="text-decoration: none; color: black;" rel="noopener" href="/user/<%= blog.user.username %>">
+                <div class="authorImg" id="authorImg" style="background-color: <%= blog.user.background %>">
+                    <%= blog.user.firstName.charAt(0).toUpperCase() %><%= blog.user.lastName.charAt(0).toUpperCase() %>
+                </div>
+                <strong><%= blog.user.firstName %> <%= blog.user.lastName %></strong>
+            </a>
+        </div>
+        <!-- <div class="col-10 col-md-11 pt-2 fs-5">
+            <strong><%= blog.user.firstName %> <%= blog.user.lastName %></strong>
+        </div> -->
+    </div>
+    <div class="row ps-lg-5">
+        <img src="<%= blog.img %>" class="w-100" height="500">
+    </div>
+    <div class="row ps-lg-5 pe-lg-5 pt-5 pb-5 body">
+        <%- blog.body %>
+    </div>
+    <hr>
+    <div class="row">
+        <h4>Comments</h4>
+        <div class="col-12 w-100">
+            <form action="/blogs/blog/<%= blog._id %>/comment" method="POST">
+                <textarea class="w-100 p-2" name="comment" id="comment" rows="2" placeholder="Type your comment here"
+                    style="resize: none;"></textarea>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+        <div class="col-12">
+            <% for(let comment of blog.comments) { %>
+            <div class="card mt-3">
+                <div class="card-header text-capitalize">
+                    <a style="text-decoration: none; color: black;" rel="noopener"
+                        href="/user/<%= comment.user.username %>">
+                        <div class="commentImg" id="commentImg"
+                            style="background-color: <%= comment.user.background %>">
+                            <%= comment.user.firstName.charAt(0).toUpperCase() %><%= comment.user.lastName.charAt(0).toUpperCase() %>
+                        </div>
+                        <strong><%= comment.user.firstName %> <%= comment.user.lastName %></strong>
+                    </a>
+                </div>
+                <div class="card-body">
+                    <p class="card-text"><%= comment.comment %></p>
+                </div>
+            </div>
+            <% } %>
+        </div>
+    </div>
+</div>
+
+<%- include("../partials/footer.ejs") %>

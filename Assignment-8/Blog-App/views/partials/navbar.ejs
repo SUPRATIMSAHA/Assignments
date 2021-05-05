@@ -1,0 +1,52 @@
+<nav class="navbar navbar-expand-md navbar-dark bg-dark">
+  <div class="container">
+    <a class="navbar-brand fs-3" href="/"><b>Blog App</b></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02"
+      aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+      <ul class="navbar-nav mb-2 mb-md-0 ms-auto fs-5">
+        <li class="nav-item me-md-2">
+          <% if (active == "home") { %>
+          <a class="nav-link active" aria-current="page" href="/">Home</a>
+          <% } else { %>
+          <a class="nav-link" href="/">Home</a>
+          <% } %>
+        </li>
+        <li class="nav-item me-md-2">
+          <% if (active == "blogs") { %>
+          <a class="nav-link active" aria-current="page" href="/blogs">Blogs</a>
+          <% } else { %>
+          <a class="nav-link" href="/blogs">Blogs</a>
+          <% } %>
+        </li>
+        <% if(!currentUser) { %>
+        <li class="nav-item me-md-2">
+          <a class="nav-link" href="/user/signin">Login</a>
+        </li>
+        <% } else { %>
+        <li class="nav-item me-md-2">
+          <div class="pI mx-auto dropdown">
+            <% if (currentUser.img && currentUser.img.length) { %>
+            <div class="pI dropbtn" id="pI" style="border: none;">
+              <img src="<%= currentUser.img %>" width="40" height="40" style="margin-top: -7px;">
+            </div>
+            <% } else { %>
+            <div class="pI dropbtn" id="pI" style="background-color: <%= currentUser.background %>">
+              <%= currentUser.firstName.charAt(0).toUpperCase() %><%= currentUser.lastName.charAt(0).toUpperCase() %>
+            </div>
+            <% } %>
+            <div class="dropdown-content">
+              <a href="/user/<%= currentUser.username %>">My Profile</a>
+              <a href="/blogs/new">Write Blog</a>
+              <a href="/user/logout">Logout</a>
+            </div>
+          </div>
+        </li>
+        <% } %>
+
+      </ul>
+    </div>
+  </div>
+</nav>
