@@ -30,39 +30,6 @@
   </div>
 </div>
 
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"
-  integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-<script src="/ckeditor/ckeditor.js"></script>
-<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script>
-<script>
-  var body = document.querySelector("#body");
-  var textarea;
-  CKEDITOR.replace('body', {
-    height: '400px'
-  })
-  $(":submit").click(async function () {
-    var error = $("[for=body]")
-    var size = error.length
-    if (size == 0) {
-      var label = `<label for="body" class="error">This field is required.</label>`
-      $(label).insertAfter("#cke_body");
-    }
-  })
-  $("#blog-form").validate({
-    ignore: [],
-    debug: false,
-    event: 'blur',
-    rules: {
-      title: { required: true },
-      body: {
-        required: function (textarea) {
-          CKEDITOR.instances[textarea.id].updateElement(); // update textarea
-          var editorcontent = textarea.value.replace(/<[^>]*>/gi, ''); // strip tags
-          return editorcontent.length === 0;
-        }
-      }
-    }
-  });
-</script>
 
-<%- include("../partials/footer.ejs") %>
+
+<%- include("../partials/footer.ejs", {scripts: ["jquery", "jquery.validate", "ckeditor", "newBlog",]}) %>

@@ -47,9 +47,18 @@ blockquote {
   font-size: 18px;
 }
 
+#authorImg img {
+  border-radius: 50%;
+}
+
 #authorImg + strong:hover,
 #commentImg + strong:hover {
   text-decoration: underline;
+}
+
+.body p {
+  overflow: hidden;
+  overflow-wrap: break-word;
 }
 
 #commentImg {
@@ -62,6 +71,10 @@ blockquote {
   color: #fff;
   text-align: center;
   cursor: pointer;
+}
+
+#commentImg img {
+  border-radius: 50%;
 }
 
 .dropdown {

@@ -3,7 +3,7 @@ const Blog = require("../models/blog");
 const Comment = require("../models/comment");
 const cloudinary = require("../utils/cloudinary");
 const upload = require("../utils/multer");
-const isLoggedIn = require("../middleware");
+const isLoggedIn = require("../middleware/isLoggedIn");
 
 const router = express.Router();
 const uploadImg = upload.single("img");
@@ -24,7 +24,9 @@ router.post("/blogs", isLoggedIn, (req, res) => {
         req.flash("error", err);
         return res.redirect("/blogs/new");
       } else {
-        const result = await cloudinary.uploader.upload(req.file.path);
+        const result = await cloudinary.uploader.upload(req.file.path, {
+          upload_preset: "blog_app",
+        });
         const { title, body } = req.body;
         const user = req.user._id;
         const img = result.secure_url;
@@ -88,7 +90,9 @@ router.patch("/blogs/blog/:id/edit", isLoggedIn, async (req, res) => {
       } else {
         const blog = await Blog.findById(req.params.id);
         await cloudinary.uploader.destroy(blog.cloudinary_id);
-        const result = await cloudinary.uploader.upload(req.file.path);
+        const result = await cloudinary.uploader.upload(req.file.path, {
+          upload_preset: "blog_app",
+        });
         const data = {
           title: req.body.title || blog.title,
           img: result.secure_url || blog.img,

@@ -1,5 +1,19 @@
+<% if (scripts.includes("jquery")) { %>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"
     integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+<% } %>
+<% if (scripts.includes("jquery.validate")) { %>
+<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script>
+<% } %>
+<% if (scripts.includes("ckeditor")) { %>
+<script src="/ckeditor/ckeditor.js"></script>
+<% } %>
+<% if (scripts.includes("script")) { %>
+<script src="/js/script.js"></script>
+<% } %>
+<% if (scripts.includes("newBlog")) { %>
+<script src="/js/newBlog.js"></script>
+<% } %>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"
     integrity="sha384-SR1sx49pcuLnqZUnnPwx6FCym0wLsk5JZuNx2bPPENzswTNFaQU1RDvt3wT4gWFG"
     crossorigin="anonymous"></script>

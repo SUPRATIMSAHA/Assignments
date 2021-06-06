@@ -58,16 +58,17 @@
   <!-- <div class="row m-4">
     <h1 class="text-center">Read all Tech Blogs</h1>
   </div> -->
-  <div class="row mt-5 mb-5 mx-auto blogs">
+  <div class="row mt-5 mb-3 mx-auto blogs">
     <%- include("./partials/flash.ejs") %>
     <% for(let blog of blogs) { %>
     <div class="col-lg-4 col-md-6 mx-auto blog-col">
       <div class="card mx-auto mb-3">
         <img src="<%= blog.img %>" class="card-img-top p-2" height="250" alt="..." />
         <div class="card-body text-center">
-          <h5 class="card-title"><%= blog.title %></h5>
-          <p class="card-text">
-            <%= blog.body.replace(/<[^>]+>/g, '').substring(0, 90) %>
+          <h5 class="card-title" style="height: 70px; overflow: hidden;">
+            <%= blog.title %></h5>
+          <p class="card-text" style="height: 90px;">
+            <%- blog.body.replace(/<[^>]+>/g, '').substring(0, 90) %>
           </p>
           <a href="/blogs/blog/<%= blog._id %>" class="btn btn-primary">Read Blog</a>
         </div>
@@ -75,6 +76,11 @@
     </div>
     <% } %>
   </div>
+  <div class="row mb-5 mx-auto">
+    <a href="/blogs" class="btn btn-primary mx-auto" style="width: fit-content;">
+      Explore More <i class="fas fa-arrow-right"></i>
+    </a>
+  </div>
 </div>
 
-<%- include("./partials/footer.ejs") %>
+<%- include("./partials/footer.ejs", {scripts: []}) %>

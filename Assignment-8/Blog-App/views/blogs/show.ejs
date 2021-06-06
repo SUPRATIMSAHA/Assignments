@@ -9,12 +9,24 @@
     </div>
     <div class="row ps-lg-5 pb-5">
         <div class="col-12">
-            <a style="text-decoration: none; color: black;" rel="noopener" href="/user/<%= blog.user.username %>">
-                <div class="authorImg" id="authorImg" style="background-color: <%= blog.user.background %>">
-                    <%= blog.user.firstName.charAt(0).toUpperCase() %><%= blog.user.lastName.charAt(0).toUpperCase() %>
-                </div>
-                <strong><%= blog.user.firstName %> <%= blog.user.lastName %></strong>
-            </a>
+            <% if(blog.user.local.username) { %>
+            <a style="text-decoration: none; color: black;" rel="noopener" href="/user/<%= blog.user.local.username %>">
+                <% } else{ %>
+                <a style="text-decoration: none; color: black;" rel="noopener"
+                    href="/user/<%= blog.user.google.googleId %>">
+                    <% } %>
+                    <% if (blog.user.img && blog.user.img.length) { %>
+                    <div class="authorImg" id="authorImg">
+                        <img src="<%= blog.user.img %>" class="profile" width="50" height="50"
+                            style="margin-top: -8px;">
+                    </div>
+                    <% } else{ %>
+                    <div class="authorImg" id="authorImg" style="background-color: <%= blog.user.background %>">
+                        <%= blog.user.firstName.charAt(0).toUpperCase() %><%= blog.user.lastName.charAt(0).toUpperCase() %>
+                    </div>
+                    <% } %>
+                    <strong><%= blog.user.firstName %> <%= blog.user.lastName %></strong>
+                </a>
         </div>
         <!-- <div class="col-10 col-md-11 pt-2 fs-5">
             <strong><%= blog.user.firstName %> <%= blog.user.lastName %></strong>
@@ -40,14 +52,26 @@
             <% for(let comment of blog.comments) { %>
             <div class="card mt-3">
                 <div class="card-header text-capitalize">
+                    <% if (comment.user.local.username) { %>
                     <a style="text-decoration: none; color: black;" rel="noopener"
-                        href="/user/<%= comment.user.username %>">
-                        <div class="commentImg" id="commentImg"
-                            style="background-color: <%= comment.user.background %>">
-                            <%= comment.user.firstName.charAt(0).toUpperCase() %><%= comment.user.lastName.charAt(0).toUpperCase() %>
-                        </div>
-                        <strong><%= comment.user.firstName %> <%= comment.user.lastName %></strong>
-                    </a>
+                        href="/user/<%= comment.user.local.username %>">
+                        <% } else { %>
+                        <a style="text-decoration: none; color: black;" rel="noopener"
+                            href="/user/<%= comment.user.google.googleId %>">
+                            <% } %>
+                            <% if(comment.user.img && comment.user.img.length) { %>
+                            <div class="commentImg" id="commentImg">
+                                <img src="<%= comment.user.img %>" class="profile" width="30" height="30"
+                                    style="margin-top: -5px;">
+                            </div>
+                            <% } else { %>
+                            <div class="commentImg" id="commentImg"
+                                style="background-color: <%= comment.user.background %>">
+                                <%= comment.user.firstName.charAt(0).toUpperCase() %><%= comment.user.lastName.charAt(0).toUpperCase() %>
+                            </div>
+                            <% } %>
+                            <strong><%= comment.user.firstName %> <%= comment.user.lastName %></strong>
+                        </a>
                 </div>
                 <div class="card-body">
                     <p class="card-text"><%= comment.comment %></p>
@@ -58,4 +82,4 @@
     </div>
 </div>
 
-<%- include("../partials/footer.ejs") %>
+<%- include("../partials/footer.ejs", {scripts: []}) %>

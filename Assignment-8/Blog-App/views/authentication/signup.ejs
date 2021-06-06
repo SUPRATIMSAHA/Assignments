@@ -22,6 +22,16 @@
                     aria-describedby="inputGroupPrepend2" required>
             </div>
         </div>
+        <div>Your gender</div>
+        <div class="form-check form-check-inline">
+            <!-- <label for="male" class="form-label">Gender</label> -->
+            <input type="radio" id="male" name="gender" class="form-check-input" value="male" required>
+            <label for="male" class="me-3 form-check-label">Male</label>
+        </div>
+        <div class="form-check form-check-inline">
+            <input type="radio" id="female" name="gender" class="form-check-input" value="female">
+            <label for="female" class="me-3 form-check-label">Female</label>
+        </div>
         <div class="col-12">
             <label for="email" class="form-label">Email</label>
             <input type="email" name="email" class="form-control" id="email" required>
@@ -33,6 +43,17 @@
         <div class="col-12">
             <button class="btn btn-primary" type="submit">Sign Up</button>
         </div>
+        <div class="">
+            <span class="txt1">
+                Or SignUp with
+            </span>
+        </div>
+
+        <div>
+            <a href="/auth/google" class="login100-social-item">
+                <img src="/images/icons/icon-google.png" alt="GOOGLE">
+            </a>
+        </div>
         <div class="col-12">
             <span>Have an account? </span>
             <a href="/user/signin">Sign In</a>
@@ -42,4 +63,4 @@
 
 
 
-<%- include("../partials/footer.ejs")%>
+<%- include("../partials/footer.ejs", {scripts: []})%>

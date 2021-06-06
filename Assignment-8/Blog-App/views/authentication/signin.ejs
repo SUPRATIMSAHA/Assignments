@@ -20,6 +20,18 @@
         </div>
         <div class="col-12">
             <button class="btn btn-primary" type="submit">Sign In</button>
+            <a class="float-end" href="/forgot/password">Forgot password?</a>
+        </div>
+        <div class="">
+            <span class="txt1">
+                Or SignIn with
+            </span>
+        </div>
+
+        <div>
+            <a href="/auth/google" class="login100-social-item">
+                <img src="/images/icons/icon-google.png" alt="GOOGLE">
+            </a>
         </div>
         <div class="col-12">
             <span>New User? </span>
@@ -30,4 +42,4 @@
 
 
 
-<%- include("../partials/footer.ejs")%>
+<%- include("../partials/footer.ejs", {scripts: []})%>

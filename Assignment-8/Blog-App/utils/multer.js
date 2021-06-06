@@ -5,7 +5,6 @@ const upload = multer({
   storage: multer.diskStorage({}),
   fileFilter: (req, file, cb) => {
     let ext = path.extname(file.originalname);
-    console.log(ext);
     if (
       ext !== ".jpg" &&
       ext !== ".jfif" &&

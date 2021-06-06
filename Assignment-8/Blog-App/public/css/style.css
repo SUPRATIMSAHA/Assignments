@@ -101,6 +101,10 @@ label[for="body"] {
   border: 1px solid white;
 }
 
+#authorImg img {
+  border-radius: 50%;
+}
+
 small {
   display: block;
   padding-top: 10px;
@@ -276,4 +280,75 @@ small {
 .chooseImg button:hover,
 .chooseImg label:hover {
   background-color: #f1f1f1;
+}
+
+.profile-name {
+  padding: 5px 0 0 16px;
+  width: calc(100% - 50px);
+}
+
+.profile-name .name {
+  padding-top: 3px;
+  font-size: 16px;
+  font-weight: 500;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  text-transform: capitalize;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+input:disabled {
+  cursor: not-allowed;
+}
+
+input:disabled + label {
+  color: #aaaaaa;
+  cursor: not-allowed !important;
+}
+
+.edit,
+.cancel {
+  margin-top: -5px;
+  color: blue;
+  font-weight: 500;
+}
+
+.edit:focus,
+.cancel:focus {
+  box-shadow: none;
+}
+
+.myOrders a,
+.logOut a {
+  text-decoration: none;
+  font-weight: 500;
+  font-size: large;
+  color: #8d8d8d;
+}
+
+.changePassword {
+  display: inline;
+}
+
+.changePassword a {
+  text-decoration: none;
+  font-weight: 500;
+  color: blue;
+}
+
+.changePassword a:hover {
+  color: black;
+}
+
+.save {
+  width: 100px;
+  font-weight: 500;
+  font-size: large;
+  padding: 8px 15px;
 }

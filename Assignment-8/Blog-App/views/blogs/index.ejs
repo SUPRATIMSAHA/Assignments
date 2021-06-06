@@ -9,33 +9,46 @@
             <div class="row g-0 bg-light position-relative">
                 <div class="col-md-6 col-lg-5 mb-md-0 p-4">
                     <a style="text-decoration: none; color: black;" rel="noopener" href="/blogs/blog/<%= blog._id %>">
-                        <img src="<%= blog.img %>" class="w-100" height="200" alt="Searching-Sorting-Visualizer">
+                        <img src="<%= blog.img %>" class="w-100" style="max-height: 250px;"
+                            alt="Searching-Sorting-Visualizer">
                     </a>
                 </div>
                 <div class="col-md-6 col-lg-7 p-4 ps-md-0">
                     <a style="text-decoration: none; color: black;" rel="noopener" href="/blogs/blog/<%= blog._id %>">
-                        <h3 class="mt-0 fw-bold"><%= blog.title %></h3>
-                        <p id="blog-body"><%= blog.body.replace(/<[^>]+>/g, '').substring(0, 90) %></p>
-                        <div class="authorImg" id="authorImg" style="background-color: <%= blog.user.background %>">
-                            <%= blog.user.firstName.charAt(0).toUpperCase() %><%= blog.user.lastName.charAt(0).toUpperCase() %>
+                        <h3 class="mt-0 fw-bold"><%= blog.title.substring(0, 60) %></h3>
+                        <p style="word-break: break-all; margin-top: revert; height: 8rem;" id="blog-body">
+                            <%- blog.body.replace(/<[^>]+>/g, '').substring(0, 150) %>
+                            <% if (blog.body.length > 150) %>...
+                        </p>
+                        <div style="position: absolute; bottom: 30px;">
+                            <% if (blog.user.img && blog.user.img.length) { %>
+                            <div class="authorImg" id="authorImg">
+                                <img src="<%= blog.user.img %>" class="profile" width="30" height="30"
+                                    style="margin-top: 0px;">
+                            </div>
+                            <% } else{ %>
+                            <div class="authorImg" id="authorImg" style="background-color: <%= blog.user.background %>">
+                                <%= blog.user.firstName.charAt(0).toUpperCase() %><%= blog.user.lastName.charAt(0).toUpperCase() %>
+                            </div>
+                            <% } %>
+                            <%= blog.user.firstName %> <%= blog.user.lastName %>
+                            <% if (new Date().getFullYear() === blog.date.getFullYear()) { %>
+                            <small>
+                                <%= new Intl.DateTimeFormat("en-US", { month: "short" }).format(blog.date) %>
+                                <%= blog.date.getDate() %> |
+                                <%= Math.ceil(blog.body.replace(/(^\s*)|(\s*$)/gi,"").replace(/[]{2,}/gi,"").replace(/\n /,"\n").split(' ').length / 200) %>
+                                min read
+                            </small>
+                            <% } else { %>
+                            <small>
+                                <%= new Intl.DateTimeFormat("en-US", { month: "short" }).format(blog.date) %>
+                                <%= blog.date.getDate() %>,
+                                <%= blog.date.getFullYear() %> |
+                                <%= Math.ceil(blog.body.replace(/(^\s*)|(\s*$)/gi,"").replace(/[]{2,}/gi,"").replace(/\n /,"\n").split(' ').length / 200) %>
+                                min read
+                            </small>
+                            <% } %>
                         </div>
-                        <%= blog.user.firstName %> <%= blog.user.lastName %>
-                        <% if (new Date().getFullYear() === blog.date.getFullYear()) { %>
-                        <small>
-                            <%= new Intl.DateTimeFormat("en-US", { month: "short" }).format(blog.date) %>
-                            <%= blog.date.getDate() %> |
-                            <%= Math.ceil(blog.body.replace(/(^\s*)|(\s*$)/gi,"").replace(/[]{2,}/gi,"").replace(/\n /,"\n").split(' ').length / 200) %>
-                            min read
-                        </small>
-                        <% } else { %>
-                        <small>
-                            <%= new Intl.DateTimeFormat("en-US", { month: "short" }).format(blog.date) %>
-                            <%= blog.date.getDate() %>,
-                            <%= blog.date.getFullYear() %> |
-                            <%= Math.ceil(blog.body.replace(/(^\s*)|(\s*$)/gi,"").replace(/[]{2,}/gi,"").replace(/\n /,"\n").split(' ').length / 200) %>
-                            min read
-                        </small>
-                        <% } %>
                     </a>
                 </div>
             </div>
@@ -44,4 +57,4 @@
     </div>
 </div>
 
-<%- include("../partials/footer.ejs") %>
+<%- include("../partials/footer.ejs", {scripts: []}) %>

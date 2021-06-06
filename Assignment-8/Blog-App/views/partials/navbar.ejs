@@ -38,7 +38,11 @@
             </div>
             <% } %>
             <div class="dropdown-content">
-              <a href="/user/<%= currentUser.username %>">My Profile</a>
+              <% if (currentUser.local.username) { %>
+              <a href="/user/<%= currentUser.local.username %>">My Profile</a>
+              <% } else{ %>
+              <a href="/user/<%= currentUser.google.googleId %>">My Profile</a>
+              <% } %>
               <a href="/blogs/new">Write Blog</a>
               <a href="/user/logout">Logout</a>
             </div>
